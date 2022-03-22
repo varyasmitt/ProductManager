@@ -14,9 +14,10 @@ public class ProductManager {
 
     public void add(Product product) {
         repository.save(product);
+
     }
 
-    public Product[] searchBy(String text) {
+    public Product[] searchBy(String text) {//метод который возвращает массив найденных товаров
         Product[] result = new Product[0];
         for (Product product : repository.getAll()) {
             if (matches(product, text)) {
@@ -30,21 +31,26 @@ public class ProductManager {
     }
 
     public boolean matches(Product product, String search) {
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            if (book.getName().equalsIgnoreCase(search)) {
+        if (product instanceof Book) {// если в параметре product лежит объект класса Book
+            Book book = (Book) product;// положем его в переменную типа Book чтобы пользоваться методами класса Book
+            if (book.getName().equalsIgnoreCase(search)) {// проверим есть ли поисковое слово в данных о названии
                 return true;
             }
-            return book.getAuthor().equalsIgnoreCase(search);
+            if (book.getAutor().equalsIgnoreCase(search)) {// проверим есть ли поисковое слово в данных об авторе
+                return true;
+            }
         }
-        if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
+        if (product instanceof Smartphone) {// если в параметре product лежит объект класса Smartphone
+            Smartphone smartphone = (Smartphone) product;// положем его в переменную типа Smartphone чтобы пользоваться методами класса Smartphone
             if (smartphone.getName().equalsIgnoreCase(search)) {
                 return true;
             }
-            return smartphone.getManufacturer().equalsIgnoreCase(search);
+            if (smartphone.getManufacture().equalsIgnoreCase(search)) {// проверим есть ли поисковое слово в данных о производители
+                return true;
+            }
         }
         return false;
     }
+
 
 }
