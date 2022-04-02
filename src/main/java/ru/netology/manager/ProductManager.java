@@ -33,10 +33,10 @@ public class ProductManager {
     public boolean matches(Product product, String search) {
         if (product instanceof Book) {// если в параметре product лежит объект класса Book
             Book book = (Book) product;// положем его в переменную типа Book чтобы пользоваться методами класса Book
-            if (book.getName().equalsIgnoreCase(search)) {// проверим есть ли поисковое слово в данных о названии
+            if (book.getName().contains(search)) {// проверим есть ли поисковое слово в данных о названии
                 return true;
             }
-            if (book.getAutor().equalsIgnoreCase(search)) {// проверим есть ли поисковое слово в данных об авторе
+            if (book.getAutor().contains(search)) {// проверим есть ли поисковое слово в данных об авторе
                 return true;
             }
         }
