@@ -42,10 +42,10 @@ public class ProductManager {
         }
         if (product instanceof Smartphone) {// если в параметре product лежит объект класса Smartphone
             Smartphone smartphone = (Smartphone) product;// положем его в переменную типа Smartphone чтобы пользоваться методами класса Smartphone
-            if (smartphone.getName().equalsIgnoreCase(search)) {
+            if (smartphone.getName().contains(search)) {
                 return true;
             }
-            if (smartphone.getManufacture().equalsIgnoreCase(search)) {// проверим есть ли поисковое слово в данных о производители
+            if (smartphone.getManufacture().contains(search)) {// проверим есть ли поисковое слово в данных о производители
                 return true;
             }
         }
